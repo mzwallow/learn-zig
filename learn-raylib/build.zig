@@ -8,19 +8,9 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    const raylib = raylib_dep.module("raylib"); // main raylib module
-    const raygui = raylib_dep.module("raygui"); // raygui module
-    const raylib_artifact = raylib_dep.artifact("raylib"); // raylib c library
-
-    // const exe = b.addExecutable(.{
-    //     .name = "learn-raylib",
-    //     .root_source_file = null,
-    //     .target = target,
-    //     .optimize = optimize,
-    // });
-    // exe.linkLibrary(raylib_artifact);
-    // exe.root_module.addImport("raylib", raylib);
-    // exe.root_module.addImport("raygui", raygui);
+    const raylib = raylib_dep.module("raylib");
+    const raygui = raylib_dep.module("raygui");
+    const raylib_artifact = raylib_dep.artifact("raylib");
 
     for (examples) |ex| {
         const ex_exe = b.addExecutable(.{
@@ -48,13 +38,13 @@ const Example = struct {
 
 const examples = [_]Example{
     .{
-        .name = "basic_window",
-        .path = "src/core/basic_window.zig",
+        .name = "core-01",
+        .path = "src/core/01_basic_window.zig",
         .desc = "Core / Basic window",
     },
     .{
-        .name = "basic_screen_manager",
-        .path = "src/core/basic_screen_manager.zig",
+        .name = "core-02",
+        .path = "src/core/02_basic_screen_manager.zig",
         .desc = "Core / Basic screen manager",
     },
 };
